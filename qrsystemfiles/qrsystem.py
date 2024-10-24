@@ -4,14 +4,14 @@ import os
 import time
 
 #Değişken Atamaları
-with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\qr-login-system-to-user-data\\toberead.txt", 'r') as dosya:
+with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'r') as dosya:
     line = dosya.readlines()
     last_line = (line[-1].strip())
 
 #Fonksiyonun Çalıştığı Kısım
 def func_start() :
         willbe = int(last_line) + 1
-        with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\qr-login-system-to-user-data\\toberead.txt", 'a') as dosya:
+        with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'a') as dosya:
             dosya.write(f"{willbe}\n")
             print(line)
 
@@ -26,7 +26,7 @@ qr = qrcode.QRCode(
 
 qr.add_data(last_line)
 qr.make(fit=True)
-img = qr.make_image(fill_color="blue", back_color="white")
+img = qr.make_image(fill_color="purple", back_color="white")
 
 #Konum
 script_directory = os.path.dirname(os.path.abspath(__file__))
