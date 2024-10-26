@@ -50,8 +50,8 @@ def newuser():
     def createnewuserkey() :
         registerusername = input_registerusername.get()
         registerpassword = input_registerpassword.get()
-        with open("C:\\Users\\baris\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\screen\\registerdata.txt", 'a') as dosya:
-            dosya.write(f"{registerusername}\n{registerpassword}\n\n")
+        with open("C:\\Users\\baris\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'a') as dosya:
+            dosya.write(f"{registerusername},{registerpassword}\n")
         print("veriler kaydedildi , keyin qr kod olarak dosya dizininde!")
         time.sleep(3)
         exit()
