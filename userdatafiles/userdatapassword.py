@@ -5,17 +5,17 @@ import qrcode
 import os
 
 # Şifrelenecek Şeyi Al Ve Random Belirli Harflerden Birini Ekle
-input_password = input("Oluşturmak İstediğiniz Şifreyi Giriniz: ")
+convertuserdata = input("Oluşturmak İstediğiniz Şifreyi Giriniz: ")
 private = ["h", "g"]
 letters = [] 
 letters.append(random.choice(private))
 
 # Şifreleme Algoritması (Sezar ve Hash , Random)
 def hmletters():
-    global input_password
+    global convertuserdata
     global letters
     letters = [random.choice(private)] 
-    for l in input_password:
+    for l in convertuserdata:
         letters.append(l)
 hmletters()
 
