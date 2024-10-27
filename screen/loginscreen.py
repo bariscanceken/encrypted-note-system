@@ -1,12 +1,10 @@
-#Kütüphaneler
+#Libraries
 import tkinter
 import time
 
-userdata = []
-
-#Ekran
+#Screen
 window = tkinter.Tk()
-window.title("Giriş Ekranı")
+window.title("Login Screen")
 window.config(padx=30, pady=30)
 
 #UI
@@ -14,54 +12,51 @@ text_username = tkinter.Label(text="Enter Your User Name: ")
 text_username.pack()
 input_username = tkinter.Entry(width=20)
 input_username.pack()
-text_password = tkinter.Label(text="Enter Your Password: ")
-text_password.pack()
-input_password = tkinter.Entry(width=20)
-input_password.pack()
 text_key = tkinter.Label(text="Enter Your Key: ")
 text_key.pack()
 input_key = tkinter.Entry(width=20)
 input_key.pack()
 
-#Pull Login Data
+#for decrypt pull data
+with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'r') as dosya:
+    line = dosya.readlines()
+
 def pulldata():
-    username = input_username.get()
-    print("Kullanıcı Adı:",username)
-    password = input_password.get() 
-    print("Şifre:",password)
-    userdata.append(username)
-    userdata.append(password)
-    print(userdata)
+    for i in range(len(line)):
+        if input_username.get() in line[i] :
+            print(line[i])
+        else:
+            print("olmuyor")
+            print(line[i])
 
-#Register
-def newuser():
-    global input_registerusername
-    global input_registerpassword
-    text_registerusername = tkinter.Label(text="Welcome! , what is your username?")
-    text_registerusername.pack()
-    input_registerusername = tkinter.Entry(width=20)
-    input_registerusername.pack()
-    text_registerpassword = tkinter.Label(text="Create a Password")
-    text_registerpassword.pack()
-    input_registerpassword = tkinter.Entry(width=20)
-    input_registerpassword.pack()
+#New Note
+def newnote():
+    global input_yournote
+    text_yournote = tkinter.Label(text="Welcome! , what is your note?")
+    text_yournote.pack()
+    input_yournote = tkinter.Entry(width=20)
+    input_yournote.pack()
+ 
+#Create Key For New Note 
+    def createnewkey() :
+        global input_username
+        if input_username == "" :
+            print("please add username")
+            time.sleep(1)
+        else :
+            newnote = input_yournote.get()
+            with open("C:\\Users\\baris\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'a') as dosya:
+                dosya.write(f"{input_username.get()},{newnote}\n")
+            print("veriler kaydedildi , keyin qr kod olarak dosya dizininde!")
+            time.sleep(2)
+            exit()
 
-#Register Verilerini Gönder
-    def createnewuserkey() :
-        registerusername = input_registerusername.get()
-        registerpassword = input_registerpassword.get()
-        with open("C:\\Users\\baris\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'a') as dosya:
-            dosya.write(f"{registerusername},{registerpassword}\n")
-        print("veriler kaydedildi , keyin qr kod olarak dosya dizininde!")
-        time.sleep(3)
-        exit()
+    button_noteokey = tkinter.Button(text="Create Key!",command= createnewkey)
+    button_noteokey.pack()
 
-    button_registerokey = tkinter.Button(text="Create Key!",command= createnewuserkey)
-    button_registerokey.pack()
-
-#Login Buttonları
-button_login = tkinter.Button(text="ENTER",command= pulldata)
+#Login Buttons
+button_login = tkinter.Button(text="Enter",command= pulldata)
 button_login.pack()
-button_register = tkinter.Button(text="Register",command= newuser)
+button_register = tkinter.Button(text="New Note",command= newnote)
 button_register.pack()
 window.mainloop()
