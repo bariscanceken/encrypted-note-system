@@ -4,8 +4,13 @@ import random
 import qrcode
 import os
 
+with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'r') as dosya:
+    line = dosya.readlines()
+    last_line = (line[-1].strip())
+
+
 # Şifrelenecek Şeyi Al Ve Random Belirli Harflerden Birini Ekle
-convertuserdata = input("Oluşturmak İstediğiniz Şifreyi Giriniz: ")
+convertuserdata = last_line
 private = ["h", "g"]
 letters = [] 
 letters.append(random.choice(private))
@@ -32,6 +37,10 @@ forqr = funcsha256.hexdigest()
 print(forqr)
 
 #Qr Oluşumu ve Kaydedilecek Yer
+with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\userdatafiles\\userdata.txt", 'a') as dosya:
+    dosya.write(f"{forqr}\n")
+
+
 qr = qrcode.QRCode(
     version=8, 
     error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -42,7 +51,5 @@ qr.add_data(forqr)
 qr.make(fit=True)
 img = qr.make_image(fill_color="blue", back_color="white")
 
-script_directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_directory, "userdata.png")
-
+file_path = os.path.join("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\userdatafiles\\notes qr", "userdata.png")
 img.save(file_path)

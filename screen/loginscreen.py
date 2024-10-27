@@ -21,13 +21,18 @@ input_key.pack()
 with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'r') as dosya:
     line = dosya.readlines()
 
+with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\qrsystemfiles\\toberead.txt", 'r') as dosya:
+    line2 = dosya.readlines()
+
+
 def pulldata():
     for i in range(len(line)):
-        if input_username.get() in line[i] :
-            print(line[i])
+        if input_username.get() in line[i] and input_key in line2 :
+            decrypt = line[i]
+            text_decrypt = tkinter.Label(text=decrypt)
+            text_decrypt.pack()
         else:
             print("olmuyor")
-            print(line[i])
 
 #New Note
 def newnote():
