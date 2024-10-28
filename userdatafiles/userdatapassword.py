@@ -40,6 +40,7 @@ print(forqr)
 with open("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\userdatafiles\\userdata.txt", 'a') as dosya:
     dosya.write(f"{forqr}\n")
 
+fornamedif = line[-1].split(',')[0]
 
 qr = qrcode.QRCode(
     version=8, 
@@ -51,5 +52,5 @@ qr.add_data(forqr)
 qr.make(fit=True)
 img = qr.make_image(fill_color="blue", back_color="white")
 
-file_path = os.path.join("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\userdatafiles\\notes qr", "userdata.png")
+file_path = os.path.join("C:\\Users\\baris\\OneDrive\\Masaüstü\\haha\\qr-login-system-to-user-data\\userdatafiles\\notes qr", f"userdata{fornamedif}.png")
 img.save(file_path)
