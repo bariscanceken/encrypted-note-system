@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 zalimkojiro,Hamza Dervis Dogan
 
+=======
+zalimkojiro,Hamza Dervis Dogan
+
+>>>>>>> 5c708b6bc23dc8b4a5a3de0017e8796eed334e83
